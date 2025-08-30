@@ -44,25 +44,20 @@ Student42,Topic067,Topic028,Topic049,Topic070,Topic071
 Student43,Topic072,Topic033,Topic054,Topic075,Topic076
 Student44,Topic017,Topic038,Topic059,Topic080,Topic001
 Student45,Topic022,Topic043,Topic064,Topic065,Topic006
-#
 # Same first choice
 Student46,Topic027,Topic048,Topic073,Topic074,Topic015
 Student47,Topic027,Topic062,Topic083,Topic004,Topic025
 Student48,Topic027,Topic013,Topic014,Topic035,Topic056
-#
 # Exactly the same preferences
 Student49,Topic066,Topic013,Topic020,Topic045,Topic080
 Student50,Topic066,Topic013,Topic020,Topic045,Topic080
-#
 # Incomplete preferences
 Student51,Topic023,Topic045,Topic067,,  
 Student52,Topic079,,,,
-#
 # Duplicated preferences
 Student53,Topic011,Topic011,Topic022,Topic033,Topic044
 Student54,Topic055,Topic066,Topic066,Topic077,Topic078
 Student55,Topic079,Topic079,Topic079,,
-#
 # Empty preferences
 Student56,,,,,
 Student57,,,,,
