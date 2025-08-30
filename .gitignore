@@ -1,0 +1,9 @@
+# Do not ignore files
+!README.md
+!.gitignore
+!*.py    # Do not ignore Python files
+!prefs_sample.csv    # Keep sample preferences file
+
+# Ignore data files to protect student privacy
+*.csv    # Ignore all CSV files (except prefs_sample.csv)
+*.xlsx  # Ignore Excel files
