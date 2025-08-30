@@ -29,7 +29,7 @@ conda activate students-projects-assigner
 	prefs.csv
 	```
 
-### 4. Update Assigner configurations
+### 4. Update Assigner Configurations
 - Edit `assigner.py` to configure key variables such as:
     - `PREFS_CSV`: Path to the student preferences CSV file (default: `'prefs_sample.csv'`)
     - `SAVE_PREFIX`: Name of the assignment output file (default: `'assignment.csv'`). Also outputs a summary file (default: `'assignment_summary.csv'`)
@@ -49,7 +49,7 @@ python assigner.py
 
 ## Protecting Student Privacy
 - Always anonymize student data in `prefs.csv` before sharing or uploading.
-- Keep `prefs.csv` out of version control by listing it in `.gitignore`.
+- Keep `prefs.csv` and other data files out of version control by listing it in `.gitignore`. All files are already ignored except where specified in `.gitignore`. 
 - Delete or encrypt files containing sensitive information when no longer needed.
 
 ## Troubleshooting
