@@ -4,9 +4,9 @@ import pandas as pd
 from scipy.optimize import linear_sum_assignment
 
 # ==================== CONFIG ====================
-PREFS_CSV = "prefs_2025fall.csv"        # wide format with columns: student, rank1..rank5
-TOPICS_CSV = "topics.csv"          # optional: master list of topics (not currently used)
-SAVE_PREFIX = "assignment_2025fall"      # writes assignment.csv, assignment_summary.csv
+PREFS_CSV = "prefs_sample.csv"        # wide format with columns: student, rank1..rank5
+# TOPICS_CSV = "topics.csv"          # optional: master list of topics
+SAVE_PREFIX = "assignment"      # writes assignment.csv, assignment_summary.csv
 SEED = 2025                     # change for a different random outcome; None -> non-deterministic
 EPS_JITTER = 1e-3               # tiny noise to break ties without changing rank order
 
@@ -52,17 +52,21 @@ def load_wide_csv(path: str):
 
     students = df["student"].tolist()
 
-    # Always load topics from TOPICS_CSV
-    topics_all = pd.read_csv(TOPICS_CSV, header=None).squeeze().astype(str).str.strip().tolist()
     # Topic universe: use any topic that appears at least once
-    topics_prefs = sorted({t for c in rank_cols for t in df[c].tolist() if t})
-    # Check if all topics in prefs are in the master topic list
-    missing_topics = sorted(set(topics_prefs) - set(topics_all))
-    if missing_topics:
-        print(f"WARNING: The following topics appear in preferences but not in {TOPICS_CSV}: {missing_topics}. Taking the union.")
-    # Take the union of both lists for the final topic universe
-    topics_union = sorted(set(topics_all).union(topics_prefs))
-    return df, students, topics_union, rank_cols
+    topics = sorted({t for c in rank_cols for t in df[c].tolist() if t})
+
+    # Load topics from TOPICS_CSV if provided
+    if "TOPICS_CSV" in globals():
+        if TOPICS_CSV is not None:
+            topics_all = pd.read_csv(TOPICS_CSV, header=None).squeeze().astype(str).str.strip().tolist()
+            # Check if all topics in prefs are in the master topic list
+            missing_topics = sorted(set(topics) - set(topics_all))
+            if missing_topics:
+                print(f"WARNING: The following topics appear in {PREFS_CSV} but not in {TOPICS_CSV}: {missing_topics}. Taking the union.")
+            # Take the union of both lists for the final topic universe
+            topics = sorted(set(topics_all).union(topics))
+    
+    return df, students, topics, rank_cols
 
 def dedup_keep_highest_rank(df: pd.DataFrame, rank_cols):
     """

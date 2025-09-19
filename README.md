@@ -32,6 +32,7 @@ conda activate students-projects-assigner
 ### 4. Update Assigner Configurations
 - Edit `assigner.py` to configure key variables such as:
     - `PREFS_CSV`: Path to the student preferences CSV file (default: `'prefs_sample.csv'`)
+    - `TOPICS_CSV`: (Optional) a master list of all topics
     - `SAVE_PREFIX`: Name of the assignment output file (default: `'assignment.csv'`). Also outputs a summary file (default: `'assignment_summary.csv'`)
     - `SEED`: Integer seed for reproducible results (default: `None`)
     - `RANK_TO_COST`: Preference ranking system translating ranks into costs to minimize; lower numbers indicate higher preference.
